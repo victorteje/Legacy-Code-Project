@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.example.first.api.repositories.repositories;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,21 +27,19 @@ class servicesTest {
     @Mock
     repositories repositories;
 
-//    @Test
-//    void getProducts() {
-//        ArrayList<models> models = new ArrayList<>();
-//        models models1 = new models((int) 1, "Camiseta", "Frase 1", "XL", "Roja");
-////        models models2 = new models((int) 2, "Camiseta", "Frase 2", "M", "Azul");
-//
-//        models.add(models1);
-////        models.add(models2);
-//
-//        when(repositories.findAll()).thenReturn(models);
-//
-//        ArrayList<com.example.first.api.models.models> getProducts = services.getProducts("Camiseta");
-//
-//        assertTrue(models.contains(models1));
-//    }
+    @Test
+    void getProducts() {
+        ArrayList<models> models = new ArrayList<>();
+        models models1 = new models((int) 1, "Camiseta", "Frase 1", "XL", "Roja");
+
+        models.add(models1);
+
+        when(repositories.findByProdType(models1.getProdType())).thenReturn(models);
+
+        ArrayList<models> getProducts = services.getProductsByType("Camiseta");
+
+        assertTrue(models.contains(models1));
+    }
 
 
 
@@ -50,9 +49,9 @@ class servicesTest {
 
         when(repositories.findById((int) 1)).thenReturn(Optional.of(models1));
 
-        Optional<models> getOneProduct = repositories.findById(1);
+        models getOneProduct = services.getOneProduct(1);
 
-        assertEquals("Frase 1", getOneProduct.get().getProdMessage());
+        assertEquals("Frase 1", getOneProduct.getProdMessage());
     }
 //
 //    @Test

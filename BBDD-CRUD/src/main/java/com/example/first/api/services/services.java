@@ -16,11 +16,11 @@ public class services {
     repositories myRepo;
 
 
-    public ArrayList<models> getProducts(String type) {
+    public ArrayList<models> getProductsByType(String type) {
         if (type == null || type.isEmpty()) {
-            return new ArrayList<>((Collection) myRepo.findAll());
+            return (ArrayList<models>) myRepo.findAll();
         } else {
-            return new ArrayList<>(myRepo.findByProdType(type));
+            return (ArrayList<models>) myRepo.findByProdType(type);
         }
     }
 

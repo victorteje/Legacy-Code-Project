@@ -17,7 +17,7 @@ public class controllers {
 
     @GetMapping()
     public ArrayList<models> getProducts(@RequestParam(required = false) String type){
-        return myService.getProducts(type);
+        return myService.getProductsByType(type);
     }
 
 

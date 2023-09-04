@@ -12,15 +12,15 @@ class modelsTest {
         models model = new models(1, "Camiseta", "Hola", "XL", "Azul");
 
         int id = model.getId();
-        String name = model.getProdType();
-        String destination = model.getProdMessage();
-        String details = model.getProdSize();
-        String email = model.getProdColor();
+        String prodType = model.getProdType();
+        String prodMessage = model.getProdMessage();
+        String prodSize = model.getProdSize();
+        String prodColor = model.getProdColor();
 
         assertEquals(1L, id);
-        assertEquals("Camiseta", name);
-        assertEquals("Hola", destination);
-        assertEquals("XL", details);
-        assertEquals("Azul", email);
+        assertEquals("Camiseta", prodType);
+        assertEquals("Hola", prodMessage);
+        assertEquals("XL", prodSize);
+        assertEquals("Azul", prodColor);
     }
 }
