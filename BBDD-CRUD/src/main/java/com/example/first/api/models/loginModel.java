@@ -36,5 +36,10 @@ public class loginModel {
     private String userFavs;
 
 
+    public void setUsername(String testUser) {
+    }
+
+    public void setPassword(String testPassword) {
+    }
 }
 
