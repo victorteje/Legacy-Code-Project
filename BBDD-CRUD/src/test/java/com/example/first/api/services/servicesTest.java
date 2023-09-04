@@ -28,7 +28,7 @@ class servicesTest {
     repositories repositories;
 
     @Test
-    void getProducts() {
+    void test_should_get_product_by_type() {
         ArrayList<models> models = new ArrayList<>();
         models models1 = new models((int) 1, "Camiseta", "Frase 1", "XL", "Roja");
 
