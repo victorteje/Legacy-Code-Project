@@ -1,18 +1,14 @@
 package com.example.first.api.services;
 
-import com.example.first.api.models.models;
+import com.example.first.api.models.CProduct;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.example.first.api.repositories.repositories;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,27 +25,27 @@ class servicesTest {
 
     @Test
     void test_should_get_product_by_type() {
-        ArrayList<models> models = new ArrayList<>();
-        models models1 = new models((int) 1, "Camiseta", "Frase 1", "XL", "Roja");
+        ArrayList<CProduct> CProduct = new ArrayList<>();
+        CProduct CProduct1 = new CProduct((int) 1, "Camiseta", "Frase 1", "XL", "Roja");
 
-        models.add(models1);
+        CProduct.add(CProduct1);
 
-        when(repositories.findByProdType(models1.getProdType())).thenReturn(models);
+        when(repositories.findByProdType(CProduct1.getProdType())).thenReturn(CProduct);
 
-        ArrayList<models> getProducts = services.getProductsByType("Camiseta");
+        ArrayList<CProduct> getProducts = services.getProductsByType("Camiseta");
 
-        assertTrue(models.contains(models1));
+        assertTrue(CProduct.contains(CProduct1));
     }
 
 
 
     @Test
     void getOneProduct() {
-        models models1 = new models((int) 1, "Camiseta", "Frase 1", "XL", "Roja");
+        CProduct CProduct1 = new CProduct((int) 1, "Camiseta", "Frase 1", "XL", "Roja");
 
-        when(repositories.findById((int) 1)).thenReturn(Optional.of(models1));
+        when(repositories.findById((int) 1)).thenReturn(Optional.of(CProduct1));
 
-        models getOneProduct = services.getOneProduct(1);
+        CProduct getOneProduct = services.getOneProduct(1);
 
         assertEquals("Frase 1", getOneProduct.getProdMessage());
     }

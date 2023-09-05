@@ -1,6 +1,6 @@
 package com.example.first.api.controllers;
 
-import com.example.first.api.models.models;
+import com.example.first.api.models.CProduct;
 import com.example.first.api.services.services;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,11 +40,11 @@ public class controllerTest {
     @Test
     public void testGetProducts() throws Exception {
 
-        ArrayList<models> expectedProducts = new ArrayList<>(Arrays.asList(
-                new models(1, "Camiseta", "Mensaje1", "L", "Blanco"),
-                new models(2, "Sudadera", "Mensaje2", "M", "Negro"),
-                new models(3,"Taza", "Mensaje3", null, "Azul" ),
-                new models(4, "Botella", "Mensaje4", null, "Negro")
+        ArrayList<CProduct> expectedProducts = new ArrayList<>(Arrays.asList(
+                new CProduct(1, "Camiseta", "Mensaje1", "L", "Blanco"),
+                new CProduct(2, "Sudadera", "Mensaje2", "M", "Negro"),
+                new CProduct(3,"Taza", "Mensaje3", null, "Azul" ),
+                new CProduct(4, "Botella", "Mensaje4", null, "Negro")
         ));
 
         when(myService.getProducts(null)).thenReturn(expectedProducts);
@@ -75,9 +75,9 @@ public class controllerTest {
 
     @Test
     public void testSetProduct() throws Exception {
-        models addProduct = new models(1,"Camiseta", "Mensaje1", "L", "Blanco");
+        CProduct addProduct = new CProduct(1,"Camiseta", "Mensaje1", "L", "Blanco");
 
-        when(myService.setProduct(any(models.class))).thenReturn(addProduct);
+        when(myService.setProduct(any(CProduct.class))).thenReturn(addProduct);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/product")
                         .contentType(MediaType.APPLICATION_JSON)

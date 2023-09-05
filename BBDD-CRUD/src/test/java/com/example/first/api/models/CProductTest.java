@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class modelsTest {
+class CProductTest {
 
     @Test
     void has_id_type_message_size_and_color() {
 
-        models model = new models(1, "Camiseta", "Hola", "XL", "Azul");
+        CProduct model = new CProduct(1, "Camiseta", "Hola", "XL", "Azul");
 
         int id = model.getId();
         String prodType = model.getProdType();

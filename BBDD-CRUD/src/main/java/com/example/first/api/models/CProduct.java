@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 @Table(name="goods")
 @NoArgsConstructor
 @AllArgsConstructor
-public class models {
+public class CProduct {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="Id")
