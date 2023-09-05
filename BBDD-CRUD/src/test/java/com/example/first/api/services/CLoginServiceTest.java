@@ -1,21 +1,19 @@
 package com.example.first.api.services;
 
-import com.example.first.api.repositories.loginRepository;
+import com.example.first.api.repositories.ILoginRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @ExtendWith(MockitoExtension.class)
-class loginServicesTest {
+class CLoginServiceTest {
     @InjectMocks
-    loginServices loginServices;
+    CLoginService CLoginService;
 
     @Mock
-    loginRepository loginRepository;
+    ILoginRepository ILoginRepository;
 
     @Test
     void tryLogin() {

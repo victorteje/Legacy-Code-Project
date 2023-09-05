@@ -64,12 +64,10 @@ public class CProductService {
             toUpdateProduct.setProdColor(newProduct.getProdColor());
 
             return toUpdateProduct;
-
         }
         catch(Exception e){
             e.printStackTrace();
             return null;
         }
-
     }
 }

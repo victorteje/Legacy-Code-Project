@@ -89,7 +89,6 @@ class CProductControllerTest {
                 .andExpect(jsonPath("$.prodMessage").value("Mensaje1"))
                 .andExpect(jsonPath("$.prodSize").value("L"))
                 .andExpect(jsonPath("$.prodColor").value("Blanco"));
-
     }
 
 

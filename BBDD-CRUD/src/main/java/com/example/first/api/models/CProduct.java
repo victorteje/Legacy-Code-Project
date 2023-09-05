@@ -18,32 +18,20 @@ public class CProduct {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="Id")
     private int id;
+
     @Column(name="Type")
-//    @Enumerated(EnumType.STRING)
     private String prodType ;
+
     @Value("Tu frase aqui")
     @Column(name="Message")
     private String prodMessage;
-    //@Nullable
+
     @Value("")
     @Column(name="Size")
-//    @Enumerated(EnumType.STRING)
-    private String prodSize;      //Dani: Revisar si da problemas el null con la enumeracion
+    private String prodSize;
+
     @Value("White")
     @Column(name="Color")
     private String prodColor;
-
-
-//    enum enumType{
-//        Camiseta,
-//        Sudadera,
-//        Taza,
-//        Botella
-//    }
-//
-//    enum enumSize{
-//        S,M,L,XL
-//    }
-
 
 }
