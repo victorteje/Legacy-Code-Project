@@ -6,7 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.example.first.api.repositories.repositories;
+import com.example.first.api.repositories.IProductRepository;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -15,13 +15,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class servicesTest {
+class CProductServiceTest {
 
     @InjectMocks
-    services services;
+    CProductService CProductService;
 
     @Mock
-    repositories repositories;
+    IProductRepository IProductRepository;
 
     @Test
     void test_should_get_product_by_type() {
@@ -30,9 +30,9 @@ class servicesTest {
 
         CProduct.add(CProduct1);
 
-        when(repositories.findByProdType(CProduct1.getProdType())).thenReturn(CProduct);
+        when(IProductRepository.findByProdType(CProduct1.getProdType())).thenReturn(CProduct);
 
-        ArrayList<CProduct> getProducts = services.getProductsByType("Camiseta");
+        ArrayList<CProduct> getProducts = CProductService.getProductsByType("Camiseta");
 
         assertTrue(CProduct.contains(CProduct1));
     }
@@ -43,9 +43,9 @@ class servicesTest {
     void getOneProduct() {
         CProduct CProduct1 = new CProduct((int) 1, "Camiseta", "Frase 1", "XL", "Roja");
 
-        when(repositories.findById((int) 1)).thenReturn(Optional.of(CProduct1));
+        when(IProductRepository.findById((int) 1)).thenReturn(Optional.of(CProduct1));
 
-        CProduct getOneProduct = services.getOneProduct(1);
+        CProduct getOneProduct = CProductService.getOneProduct(1);
 
         assertEquals("Frase 1", getOneProduct.getProdMessage());
     }

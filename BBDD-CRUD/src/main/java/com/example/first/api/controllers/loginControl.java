@@ -2,9 +2,7 @@ package com.example.first.api.controllers;
 
 import com.example.first.api.models.loginModel;
 import com.example.first.api.services.loginServices;
-import com.example.first.api.services.services;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

@@ -1,7 +1,7 @@
 package com.example.first.api.services;
 
 import com.example.first.api.models.CProduct;
-import com.example.first.api.repositories.repositories;
+import com.example.first.api.repositories.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +9,10 @@ import java.util.ArrayList;
 
 
 @Service
-public class services {
+public class CProductService {
 
     @Autowired
-    repositories myRepo;
+    IProductRepository myRepo;
 
 
     public ArrayList<CProduct> getProductsByType(String type) {
