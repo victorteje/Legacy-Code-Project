@@ -119,20 +119,16 @@ class CProductControllerTest {
 
     @Test
     public void testUpdateProduct() throws Exception {
-        // Define el ID del producto que se va a actualizar
         int productId = 1;
 
-        // Define un objeto CProduct que simula la solicitud JSON del cliente
         CProduct requestProduct = new CProduct();
         requestProduct.setProdType("Camiseta");
         requestProduct.setProdMessage("Nuevo mensaje");
         requestProduct.setProdSize("L");
         requestProduct.setProdColor("Blanco");
 
-        // Configura el comportamiento esperado cuando se llama a los métodos del servicio
         Mockito.when(myService.changeProduct(productId, requestProduct)).thenReturn(requestProduct);
 
-        // Realiza la solicitud PUT al controlador para actualizar el producto
         mockMvc.perform(MockMvcRequestBuilders.put("/product/update/{id}", productId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"prodType\": \"Camiseta\", \"prodMessage\": \"Nuevo mensaje\", \"prodSize\": \"L\", \"prodColor\": \"Blanco\"}"))
