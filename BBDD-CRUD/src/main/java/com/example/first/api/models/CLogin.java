@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class loginModel {
+public class CLogin {
 
     @Id
     @Column(name="UserEmail")

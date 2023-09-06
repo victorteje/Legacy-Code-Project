@@ -1,7 +1,7 @@
 package com.example.first.api.controllers;
 
 import com.example.first.api.models.CProduct;
-import com.example.first.api.services.services;
+import com.example.first.api.services.CProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -15,19 +15,20 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-public class controllerTest {
+class CProductControllerTest {
 
     @InjectMocks
-    private controllers myController;
+    private CProductController myController;
 
     @Mock
 
-    private services myService;
+    private CProductService myService;
 
     private MockMvc mockMvc;
 
@@ -47,7 +48,7 @@ public class controllerTest {
                 new CProduct(4, "Botella", "Mensaje4", null, "Negro")
         ));
 
-        when(myService.getProducts(null)).thenReturn(expectedProducts);
+        when(myService.getProductsByType(null)).thenReturn(expectedProducts);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/product")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -88,7 +89,23 @@ public class controllerTest {
                 .andExpect(jsonPath("$.prodMessage").value("Mensaje1"))
                 .andExpect(jsonPath("$.prodSize").value("L"))
                 .andExpect(jsonPath("$.prodColor").value("Blanco"));
-
     }
 
+
+
+    /*@Test
+    void getProducts() {
+    }
+
+    @Test
+    void setProduct() {
+    }
+
+    @Test
+    void deleteProduct() {
+    }
+
+    @Test
+    void changeProduct() {
+    }*/
 }

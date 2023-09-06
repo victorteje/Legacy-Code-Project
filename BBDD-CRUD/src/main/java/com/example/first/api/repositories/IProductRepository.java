@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface repositories extends CrudRepository<CProduct, Integer> {
+public interface IProductRepository extends CrudRepository<CProduct, Integer> {
     List<CProduct> findByProdType(String type);
 }

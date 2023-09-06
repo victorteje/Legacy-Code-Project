@@ -1,7 +1,7 @@
 package com.example.first.api.controllers;
 
 import com.example.first.api.models.CProduct;
-import com.example.first.api.services.services;
+import com.example.first.api.services.CProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,10 +10,10 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/product")
 @CrossOrigin(origins = "*")
-public class controllers {
+public class CProductController {
 
     @Autowired
-    services myService;
+    CProductService myService;
 
     @GetMapping()
     public ArrayList<CProduct> getProducts(@RequestParam(required = false) String type){
