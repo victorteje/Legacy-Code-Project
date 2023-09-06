@@ -87,11 +87,11 @@ async function SignUp() {
       <v-spacer></v-spacer>
     </v-toolbar>
     <v-form ref="form" v-model="isValid" class="pa-4 pt-6">
-      <v-text-field v-model="myPass" :rules="[rules.password, rules.length(6)]" variant="filled" color="deep-purple"
-        counter="6" label="Password" style="min-height: 96px" type="password"></v-text-field>
       <v-text-field v-model="userName" variant="filled" color="deep-purple" label="Nombre de Usuario"></v-text-field>
       <v-text-field v-model="myEmail" :rules="[rules.email]" variant="filled" color="deep-purple" label="Email"
-        type="email"></v-text-field>
+      type="email"></v-text-field>
+      <v-text-field v-model="myPass" :rules="[rules.password, rules.length(6)]" variant="filled" color="deep-purple"
+        counter="6" label="Password" style="min-height: 96px" type="password"></v-text-field>
       <v-checkbox v-model="agreement" :rules="[rules.required]" color="deep-purple">
         <template v-slot:label>
           Acepto los&nbsp;
