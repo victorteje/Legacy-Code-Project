@@ -1,30 +1,30 @@
 package com.example.first.api.services;
 
-import com.example.first.api.models.models;
-import com.example.first.api.repositories.repositories;
+import com.example.first.api.models.CProduct;
+import com.example.first.api.repositories.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collection;
+
 
 @Service
-public class services {
+public class CProductService {
 
     @Autowired
-    repositories myRepo;
+    IProductRepository myRepo;
 
 
-    public ArrayList<models> getProducts(String type) {
+    public ArrayList<CProduct> getProductsByType(String type) {
         if (type == null || type.isEmpty()) {
-            return new ArrayList<>((Collection) myRepo.findAll());
+            return (ArrayList<CProduct>) myRepo.findAll();
         } else {
-            return new ArrayList<>(myRepo.findByProdType(type));
+            return (ArrayList<CProduct>) myRepo.findByProdType(type);
         }
     }
 
 
-    public models getOneProduct(int id){
+    public CProduct getOneProduct(int id){
         try{
             return myRepo.findById(id).orElse(null);
         }
@@ -44,7 +44,7 @@ public class services {
         }
     }
 
-    public models setProduct(models newProduct) {
+    public CProduct setProduct(CProduct newProduct) {
         try{
            return myRepo.save(newProduct);
         }
@@ -54,9 +54,9 @@ public class services {
         }
     }
 
-    public models changeProduct(int id, models newProduct) {
+    public CProduct changeProduct(int id, CProduct newProduct) {
         try{
-            models toUpdateProduct= myRepo.findById(id).get();
+            CProduct toUpdateProduct= myRepo.findById(id).get();
             toUpdateProduct.setProdType(newProduct.getProdType());
             toUpdateProduct.setProdMessage(newProduct.getProdMessage());
             toUpdateProduct.setProdSize(newProduct.getProdSize());
@@ -64,12 +64,10 @@ public class services {
             toUpdateProduct.setProdColor(newProduct.getProdColor());
 
             return toUpdateProduct;
-
         }
         catch(Exception e){
             e.printStackTrace();
             return null;
         }
-
     }
 }

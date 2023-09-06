@@ -1,7 +1,7 @@
 package com.example.first.api.controllers;
 
-import com.example.first.api.models.models;
-import com.example.first.api.services.services;
+import com.example.first.api.models.CProduct;
+import com.example.first.api.services.CProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,19 +10,19 @@ import java.util.ArrayList;
 @RestController
 @RequestMapping("/product")
 @CrossOrigin(origins = "*")
-public class controllers {
+public class CProductController {
 
     @Autowired
-    services myService;
+    CProductService myService;
 
     @GetMapping()
-    public ArrayList<models> getProducts(@RequestParam(required = false) String type){
-        return myService.getProducts(type);
+    public ArrayList<CProduct> getProducts(@RequestParam(required = false) String type){
+        return myService.getProductsByType(type);
     }
 
 
     @PostMapping
-    public models setProduct(@RequestBody models newProduct){
+    public CProduct setProduct(@RequestBody CProduct newProduct){
         return myService.setProduct(newProduct);
     }
 
@@ -32,7 +32,7 @@ public class controllers {
     }
 
     @PutMapping(path="/update/{id}")
-    public models changeProduct(@RequestBody int id, @RequestBody models newProduct){
+    public CProduct changeProduct(@RequestBody int id, @RequestBody CProduct newProduct){
         return myService.setProduct(myService.changeProduct(id, newProduct));
     }
 }

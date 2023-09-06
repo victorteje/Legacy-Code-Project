@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class loginModel {
+public class CLogin {
 
     @Id
     @Column(name="UserEmail")
@@ -36,5 +36,10 @@ public class loginModel {
     private String userFavs;
 
 
+    public void setUsername(String testUser) {
+    }
+
+    public void setPassword(String testPassword) {
+    }
 }
 

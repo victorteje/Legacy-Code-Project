@@ -1,35 +1,27 @@
 package com.example.first.api.services;
 
-import com.example.first.api.models.loginModel;
-import com.example.first.api.repositories.loginRepository;
+import com.example.first.api.models.CLogin;
+import com.example.first.api.repositories.ILoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 @Service
-public class loginServices {
+public class CLoginService {
 
     @Autowired
-    private loginRepository myRepo;
+    private ILoginRepository myRepo;
 
-    public loginModel tryLogin(loginModel myLogin) {
+    public CLogin tryLogin(CLogin myLogin) {
 
-        loginModel userOK=myRepo.findByUserEmailAndUserPassword(myLogin.getUserEmail(), myLogin.getUserPassword());
+        CLogin userOK=myRepo.findByUserEmailAndUserPassword(myLogin.getUserEmail(), myLogin.getUserPassword());
 
         if(userOK!=null){
             return userOK;
         }
         else return null;
-
-//        if(myRepo.findOne(myLogin).isPresent()){
-//            return myRepo.findOne(myLogin).get();
-//        }
-//        else {
-//            return null;
-//        }
     }
 
-    public loginModel addNewUser(loginModel newData) {
+    public CLogin addNewUser(CLogin newData) {
         try{
             if(myRepo.findByUserEmail(newData.getUserEmail())==null){
                 return myRepo.save(newData);
@@ -42,7 +34,7 @@ public class loginServices {
         }
 
     }
-    public boolean addFavs(loginModel userData) {
+    public boolean addFavs(CLogin userData) {
         try{
             if(myRepo.findByUserEmailAndUserPassword(userData.getUserEmail(), userData.getUserPassword())!=null){
                 myRepo.save(userData);
@@ -54,8 +46,6 @@ public class loginServices {
             e.printStackTrace();
             return false;
       }
-
 }
-
 
 }
