@@ -1,11 +1,13 @@
 package com.example.first.api.controllers;
 
+
 import com.example.first.api.models.CProduct;
 import com.example.first.api.services.CProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -17,6 +19,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -93,19 +96,49 @@ class CProductControllerTest {
 
 
 
-    /*@Test
-    void getProducts() {
-    }
 
     @Test
-    void setProduct() {
+    public void testDeleteProduct() throws Exception {
+        int productId = 1;
+
+
+        when(myService.deleteProduct(productId)).thenReturn("Record " + productId + " was successfully deleted.");
+
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/product/delete/" + productId)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_PLAIN)) // Ajuste aquí
+                .andExpect(content().string("Record " + productId + " was successfully deleted."));
+
+
+        verify(myService).deleteProduct(productId);
     }
 
-    @Test
-    void deleteProduct() {
-    }
+
 
     @Test
-    void changeProduct() {
-    }*/
+    public void testUpdateProduct() throws Exception {
+        // Define el ID del producto que se va a actualizar
+        int productId = 1;
+
+        // Define un objeto CProduct que simula la solicitud JSON del cliente
+        CProduct requestProduct = new CProduct();
+        requestProduct.setProdType("Camiseta");
+        requestProduct.setProdMessage("Nuevo mensaje");
+        requestProduct.setProdSize("L");
+        requestProduct.setProdColor("Blanco");
+
+        // Configura el comportamiento esperado cuando se llama a los métodos del servicio
+        Mockito.when(myService.changeProduct(productId, requestProduct)).thenReturn(requestProduct);
+
+        // Realiza la solicitud PUT al controlador para actualizar el producto
+        mockMvc.perform(MockMvcRequestBuilders.put("/product/update/{id}", productId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"prodType\": \"Camiseta\", \"prodMessage\": \"Nuevo mensaje\", \"prodSize\": \"L\", \"prodColor\": \"Blanco\"}"))
+                .andExpect(status().isOk());
+    }
+
+
+
 }
